@@ -9,13 +9,19 @@ Rocketpay Improved 🚀💳
   <a href="#-license">License</a>
 </p>
 
+<p align="center">
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000">
+
+ <img src="https://img.shields.io/static/v1?label=NLW&message=04&color=8257E5&labelColor=000000" alt="NLW 04" />
+</p>
+
 ###### I'll try to keep the development of this project at [pliavi@twitch](http://twitch.tv/pliavi), follow to get notified when it starts!
 
-## Project
+## 💻 Project
 
 This will be a complete version of the original Rocketseat project, with all deposit, withdraw and transfer functions, full authentication and frontend!
 
-## TODOS
+## 📔 TODOS
 
 ### Backend
 
@@ -38,7 +44,7 @@ This will be a complete version of the original Rocketseat project, with all dep
 
 - Soon
 
-## Tecnologies
+## ✨ Tecnologies
 
 ### Backend
 
@@ -53,7 +59,7 @@ This will be a complete version of the original Rocketseat project, with all dep
 - [Vite](https://vitejs.dev/)
 - [TailwindCSS](https://tailwindcss.com/)
 
-## License
+## 📄 License
 
 All copyrights are from Rocketseat, the license file is the same from the original at [@rocketseat-education/nlw-04-elixir](https://github.com/rocketseat-education/nlw-04-elixir)
 

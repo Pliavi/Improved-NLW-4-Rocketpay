@@ -1,24 +1,27 @@
 defmodule Rocketpay.Account.Transfer do
   alias Ecto.Multi
   alias Rocketpay.Repo
-  alias Rocketpay.Account.Operation
+  alias Rocketpay.Account.Operations.TransferResponse
+  alias Rocketpay.Account.{Deposit, Withdraw}
 
   def call(%{"from" => from_id, "to" => to_id, "value" => value}) do
     withdraw_params = build_params(from_id, value)
     deposit_params = build_params(to_id, value)
 
     Multi.new()
-    |> Multi.run(:withdraw, fn _repo, _changes -> Operation.call(withdraw_params, :withdraw) end)
-    |> Multi.run(:deposit, fn _repo, _changes -> Operation.call(deposit_params, :deposit) end)
-    |> run_transaction()
+    |> Multi.run(:withdraw, fn _, _ -> Withdraw.call(withdraw_params) end)
+    |> Multi.run(:deposit, fn _, _ -> Deposit.call(deposit_params) end)
+    |> Repo.transaction()
+    |> handle_result()
   end
 
   defp build_params(id, value), do: %{"id" => id, "value" => value}
 
-  defp run_transaction(multi) do
-    case Repo.transaction(multi) do
-      {:ok, result} -> result
-      {:error, _operation, reason, _changes} -> {:error, reason}
-    end
+  defp handle_result({:ok, %{withdraw: from_account, deposit: to_account}}) do
+    {:ok, %TransferResponse{from_account: from_account, to_account: to_account}}
+  end
+
+  defp handle_result({:error, _operation, reason, _changes}) do
+    {:error, reason}
   end
 end

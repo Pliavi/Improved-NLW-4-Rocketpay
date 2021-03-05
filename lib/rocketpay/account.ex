@@ -5,13 +5,16 @@ defmodule Rocketpay.Account do
   alias __MODULE__
   alias Rocketpay.User
 
+  # @derive {Jason.Encoder, only: [:id, :balance, :locked ]}
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @required_attrs [:balance, :user_id]
+  @required_attrs [:balance, :blocked_at, :user_id]
 
   schema "accounts" do
     field :balance, :decimal
+    field :blocked_at, :naive_datetime
     belongs_to :user, User
 
     timestamps()

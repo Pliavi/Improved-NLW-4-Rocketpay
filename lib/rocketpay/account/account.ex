@@ -5,8 +5,6 @@ defmodule Rocketpay.Account do
   alias __MODULE__
   alias Rocketpay.User
 
-  # @derive {Jason.Encoder, only: [:id, :balance, :locked ]}
-
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 

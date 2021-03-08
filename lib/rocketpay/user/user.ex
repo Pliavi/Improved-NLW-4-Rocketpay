@@ -21,8 +21,8 @@ defmodule Rocketpay.User do
     timestamps()
   end
 
-  def changeset(attrs) do
-    %User{}
+  def changeset(struct \\ %User{}, attrs) do
+    struct
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
     |> validate_length(:password, min: 6)

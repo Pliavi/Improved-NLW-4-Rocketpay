@@ -1,15 +1,15 @@
-defmodule Rocketpay.Account.Operation do
+defmodule Rocketpay.Account.Operations.UpdateBalance do
   require Decimal
   alias Rocketpay.{Account, Repo}
   alias Ecto.Changeset
 
-  def call(%{"id" => id, "value" => value}, operation) do
-    Repo.get(Account, id)
+  def call(account, value, operation) do
+    account
     |> update_balance(Decimal.cast(value), operation)
-    |> update_account
+    |> update_account()
   end
 
-  defp update_balance(%Account{} = account, {:ok, value}, :deposit) do
+  defp update_balance(account, {:ok, value}, :deposit) do
     new_balance = %{balance: Decimal.add(account.balance, value)}
 
     Account.changeset(account, new_balance)

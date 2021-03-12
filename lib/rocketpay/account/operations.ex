@@ -1,14 +1,16 @@
 defmodule Rocketpay.Account.Operations do
   alias Rocketpay.Account.Operations.UpdateBalance
+  alias Rocketpay.Repo
+  alias Ecto.Multi
 
   def withdraw(account, value) do
     account
-    |> MoneyOperation.call(value, :withdraw)
+    |> UpdateBalance.call(value, :withdraw)
   end
 
   def deposit(account, value) do
     account
-    |> MoneyOperation.call(value, :deposit)
+    |> UpdateBalance.call(value, :deposit)
   end
 
   def transfer(from_account, to_account, value) do
@@ -19,7 +21,7 @@ defmodule Rocketpay.Account.Operations do
 
     case Repo.transaction(multi) do
       {:ok, %{withdraw: from, deposit: to}} ->
-        {:ok, %{from: from, to: to}}
+        {:ok, %{from: from, to: to, value: value}}
 
       {:error, _, reason, _} ->
         {:error, reason}

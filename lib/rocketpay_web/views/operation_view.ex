@@ -1,6 +1,5 @@
 defmodule RocketpayWeb.TransactionView do
   alias Rocketpay.Account
-  alias Rocketpay.Account.Operations.TransferResponse
 
   def render("update.json", %{account: %Account{} = account}) do
     %{
@@ -12,7 +11,7 @@ defmodule RocketpayWeb.TransactionView do
     }
   end
 
-  def render("transfer.json", %{transfer: %TransferResponse{} = transfer}) do
+  def render("transfer.json", transfer) do
     %{
       message: "Transfer done successfully",
       transfer: %{

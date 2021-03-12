@@ -2,29 +2,33 @@ defmodule RocketpayWeb.OperationController do
   use RocketpayWeb, :controller
 
   alias Rocketpay.Account
-  alias Rocketpay.Account.Operations.TransferResponse
+  alias Rocketpay.Repo
+  alias Rocketpay.Account.Operations
 
-  def deposit(conn, params) do
-    with {:ok, %Account{} = account} <- Rocketpay.deposit(params) do
-      conn
-      |> put_status(:ok)
-      |> render("update.json", account: account)
+  action_fallback Rocketpay.FallbackController
+
+  def deposit(conn, %{"id" => id, "value" => value}) do
+    account = Repo.get!(Account, id)
+
+    with {:ok, %Account{} = account} <- Operations.deposit(account, value) do
+      render(conn, "update.json", account: account)
     end
   end
 
-  def withdraw(conn, params) do
-    with {:ok, %Account{} = account} <- Rocketpay.withdraw(params) do
-      conn
-      |> put_status(:ok)
-      |> render("update.json", account: account)
+  def withdraw(conn, %{"id" => id, "value" => value}) do
+    account = Repo.get!(Account, id)
+
+    with {:ok, %Account{} = account} <- Operations.withdraw(account, value) do
+      render(conn, "update.json", account: account)
     end
   end
 
-  def transfer(conn, params) do
-    with {:ok, %TransferResponse{} = transfer} <- Rocketpay.transfer(params) do
-      conn
-      |> put_status(:ok)
-      |> render("transfer.json", transfer: transfer)
+  def transfer(conn, %{"from_id" => from_id, "to_id" => to_id, "value" => value}) do
+    from_account = Repo.get!(Account, from_id)
+    to_account = Repo.get!(Account, to_id)
+
+    with {:ok, transfer} <- Operations.transfer(from_account, to_account, value) do
+      render(conn, "transfer.json", transfer: transfer)
     end
   end
 end

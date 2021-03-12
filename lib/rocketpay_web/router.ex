@@ -9,9 +9,13 @@ defmodule RocketpayWeb.Router do
     pipe_through :api
 
     post "/user", UserController, :create
-    post "/withdraw", OperationController, :withdraw
-    post "/deposit", OperationController, :deposit
-    post "/transfer", OperationController, :transfer
+    post "/user/close_account", UserController, :delete
+
+    post "/operation/withdraw", OperationController, :withdraw
+    post "/operation/deposit", OperationController, :deposit
+    post "/operation/transfer", OperationController, :transfer
+
+    post "/account/block", AccountController, :set_block
   end
 
   # Enables LiveDashboard only for development

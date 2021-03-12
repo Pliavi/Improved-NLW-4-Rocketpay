@@ -2,7 +2,6 @@ defmodule Rocketpay.Account do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias __MODULE__
   alias Rocketpay.User
 
   @primary_key {:id, :binary_id, autogenerate: true}

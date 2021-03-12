@@ -3,6 +3,10 @@ defmodule Rocketpay.Account.Operations.UpdateBalance do
   alias Rocketpay.{Account, Repo}
   alias Ecto.Changeset
 
+  # XXX: Possible use of 'With', try use it in the future
+  # (https://www.openmymind.net/Elixirs-With-Statement/)
+  # To avoid check account not found error in update_balance
+  # Or send all those verifications to changeset function in Account
   def call(account, value, operation) do
     account
     |> update_balance(Decimal.cast(value), operation)

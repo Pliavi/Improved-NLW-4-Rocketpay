@@ -4,7 +4,7 @@ defmodule Rocketpay.Repo.Migrations.CreateAccountTable do
   def change do
     create table :accounts do
       add :balance, :decimal
-      add :blocked_at, :naive_datetime
+      add :blocked_at, :naive_datetime, default: "now()"
       add :user_id, references(:users, type: :binary_id)
 
       timestamps()

@@ -2,12 +2,11 @@ defmodule Rocketpay.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias __MODULE__
   alias Ecto.Changeset
   alias Rocketpay.Account
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @required_attrs [:name, :username, :email, :age, :password]
+  @required_attrs ~w(name username email age password)a
 
   schema "users" do
     field :name, :string
@@ -16,13 +15,13 @@ defmodule Rocketpay.User do
     field :age, :integer
     field :password, :string, virtual: true
     field :password_hash, :string
-    has_one :account, Account
+    has_one :account, Account, on_delete: :delete_all
 
     timestamps()
   end
 
-  def changeset(struct \\ %User{}, attrs) do
-    struct
+  def changeset(user, attrs) do
+    user
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
     |> validate_length(:password, min: 6)

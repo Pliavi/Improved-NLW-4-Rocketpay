@@ -2,14 +2,15 @@ defmodule Rocketpay.Users do
   alias Ecto.Multi
   alias Rocketpay.{Repo, User, Accounts}
 
+  @spec create(map()) :: {:ok, User} | {:error, Ecto.Changeset}
   def create(params) do
     multi =
       Multi.new()
-      |> Multi.insert(:user, User.changeset(params))
+      |> Multi.insert(:user, User.changeset(%User{}, params))
       |> Multi.run(:account, fn _, %{user: user} ->
         Accounts.create(user)
       end)
-      |> Multi.run(:user_preloaded_account, fn repo, %{create_user: user} ->
+      |> Multi.run(:user_preloaded_account, fn repo, %{user: user} ->
         {:ok, repo.preload(user, :account)}
       end)
 
@@ -20,7 +21,7 @@ defmodule Rocketpay.Users do
   end
 
   def update(user, params) do
-    Repo.update(:user, User.changeset(user, params))
+    Repo.update(User.changeset(user, params))
   end
 
   def delete(user) do

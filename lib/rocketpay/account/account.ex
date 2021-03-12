@@ -8,7 +8,7 @@ defmodule Rocketpay.Account do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @required_attrs [:balance, :user_id]
+  @required_attrs ~w(balance user_id)a
 
   schema "accounts" do
     field :balance, :decimal
@@ -18,7 +18,7 @@ defmodule Rocketpay.Account do
     timestamps()
   end
 
-  def changeset(struct \\ %Account{}, attrs) do
+  def changeset(struct, attrs) do
     struct
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)

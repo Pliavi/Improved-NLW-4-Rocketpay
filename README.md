@@ -10,6 +10,8 @@ Rocketpay Improved 🚀💳
 </p>
 
 <p align="center">
+  [![Elixir CI](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/actions/workflows/elixir.yml/badge.svg?branch=main)](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/actions/workflows/elixir.yml)
+  
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000">
 
  <img src="https://img.shields.io/static/v1?label=NLW&message=04&color=8257E5&labelColor=000000" alt="NLW 04" />
@@ -24,22 +26,8 @@ This will be a complete version of the original Rocketseat project, with all dep
 ## 📔 TODOS
 
 ### Backend
-
-- [ ] Refactoring/simplifying things
-- [ ] Authentication with token
-- [ ] User control functions
-  - [ ] Update user info
-  - [ ] Close account
-- [ ] Account control functions
-  - [ ] Block account (can't withdraw or transfer to other account, but can receive money)
-- [ ] Money tracking and bank statement
-
-### Backend extras
-
-- [ ] Recurrent transaction (withdraw/transfer automatically each month)
-- [ ] Diary income based in brazillian _CDI (Certificado de Depósito Interbancário)_  
-       https://console.hgbrasil.com/documentation/finance#obter-somente-taxas-cdi-selic
-
+ See issue: [[TODO] Backend · Issue #1](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/issues/1)
+ 
 ### Frontend
 
 - Soon

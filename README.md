@@ -1,21 +1,22 @@
-<h1 align="center">
-Rocketpay Improved 🚀💳
-</h1>
+<h1 align="center">Rocketpay Improved 🚀💳</h1>
 <p align="center">
   <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-todos">TODOS</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-tecnologies">Tecnologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-how-to-run">How to run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <!--a href="#-how-to-run">How to run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;-->
   <a href="#-license">License</a>
 </p>
 
 <p align="center">
-  [![Elixir CI](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/actions/workflows/elixir.yml/badge.svg?branch=main)](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/actions/workflows/elixir.yml)
-  
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000">
+  <a href="https://github.com/Pliavi/Improved-NLW-4-Rocketpay/actions/workflows/elixir.yml">
+    <img alt="License" src="https://github.com/Pliavi/Improved-NLW-4-Rocketpay/actions/workflows/elixir.yml/badge.svg?branch=main"/>
+  </a>
 
- <img src="https://img.shields.io/static/v1?label=NLW&message=04&color=8257E5&labelColor=000000" alt="NLW 04" />
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000"/>
+
+  <img src="https://img.shields.io/static/v1?label=NLW&message=04&color=8257E5&labelColor=000000" alt="NLW 04"/>
 </p>
+
 
 ###### I'll try to keep the development of this project at [pliavi@twitch](http://twitch.tv/pliavi), follow to get notified when it starts!
 
@@ -26,8 +27,9 @@ This will be a complete version of the original Rocketseat project, with all dep
 ## 📔 TODOS
 
 ### Backend
- See issue: [[TODO] Backend · Issue #1](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/issues/1)
- 
+
+See issue: [[TODO] Backend · Issue #1](https://github.com/Pliavi/Improved-NLW-4-Rocketpay/issues/1)
+
 ### Frontend
 
 - Soon

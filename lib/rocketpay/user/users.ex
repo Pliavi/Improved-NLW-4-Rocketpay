@@ -1,8 +1,8 @@
 defmodule Rocketpay.Users do
-  alias Ecto.Multi
+  alias Ecto.{Multi, Changeset}
   alias Rocketpay.{Repo, User, Accounts}
 
-  @spec create(map()) :: {:ok, User} | {:error, Ecto.Changeset}
+  @spec create(map()) :: {:ok, User} | {:error, Changeset}
   def create(params) do
     multi =
       Multi.new()

@@ -7,6 +7,7 @@ defmodule Rocketpay.Account.Operations.UpdateBalance do
   # (https://www.openmymind.net/Elixirs-With-Statement/)
   # To avoid check account not found error in update_balance
   # Or send all those verifications to changeset function in Account
+  @spec call(Account, String.t(), atom()) :: {:ok, Changeset} | {:error, any()}
   def call(account, value, operation) do
     account
     |> update_balance(Decimal.cast(value), operation)
@@ -26,17 +27,17 @@ defmodule Rocketpay.Account.Operations.UpdateBalance do
   end
 
   defp update_balance(%Account{}, _, :withdraw) do
-    {:error, "Account is blocked!"}
+    {:error, "account is blocked"}
   end
 
   defp update_balance(nil, _, _) do
-    {:error, "Account not found!"}
+    {:error, "account not found"}
   end
 
   defp update_balance(_, :error, _) do
-    {:error, "Invalid value!"}
+    {:error, "invalid value"}
   end
 
   defp update_account(%Changeset{} = account), do: Repo.update(account)
-  defp update_account({:error, _} = error), do: error
+  defp update_account(error), do: error
 end

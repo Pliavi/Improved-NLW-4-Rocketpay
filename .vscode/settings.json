@@ -1,3 +1,7 @@
 {
-  "elixir.credo.ignoreWarningMessages": true
+  "elixir.credo.ignoreWarningMessages": true,
+  "files.exclude": {
+    ".elixir_ls": true,
+    "deps/": true
+  }
 }

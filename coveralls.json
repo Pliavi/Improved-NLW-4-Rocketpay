@@ -1,0 +1,21 @@
+{
+  "skip_files": [
+    "test/support",
+
+    "lib/rocketpay.ex",
+    "lib/rocketpay_web.ex",
+
+    "lib/rocketpay/application.ex",
+    "lib/rocketpay/repo.ex",
+
+    "lib/rocketpay_web/endpoint.ex",
+    "lib/rocketpay_web/gettext.ex",
+    "lib/rocketpay_web/telemetry.ex",
+
+    "lib/rocketpay_web/views/error_helpers.ex",
+    "lib/rocketpay_web/views/error_view.ex",
+
+    "test/rocketpay_web/views/error_view_test.exs",
+    "test/test_helper.exs"
+  ]
+}

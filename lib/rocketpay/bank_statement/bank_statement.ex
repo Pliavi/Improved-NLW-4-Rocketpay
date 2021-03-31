@@ -2,22 +2,23 @@ defmodule Rocketpay.BankStatement do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Rocketpay.User
+  alias Rocketpay.Account
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @required_attrs ~w(value user_id type)a
-  @optional_attrs ~w(reason)a
+  @required_attrs ~w(value account_id operation)a
+  @optional_attrs ~w(reason sub_operation)a
 
-  schema "accounts" do
+  schema "bank_statement" do
     field :value, :decimal
-    field :type, :string
+    field :operation, :string, virtual: true
+    field :sub_operation, :string, virtual: true
     field :reason, :string
 
-    belongs_to :user, User
+    belongs_to :account, Account
 
-    timestamps()
+    timestamps(updated_at: false, type: :utc_datetime_usec)
   end
 
   def changeset(struct, attrs) do

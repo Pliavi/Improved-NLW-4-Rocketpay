@@ -21,6 +21,6 @@ defmodule Rocketpay.Account do
     struct
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
-    |> check_constraint(:balance, name: :balance_must_be_positive_or_zero)
+    |> check_constraint(:balance, name: :balance_must_be_positive_or_zero, message: "value must be positive")
   end
 end
